@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Turnit.GenericStore.Domain\Turnit.GenericStore.Domain.csproj" />
+    <ProjectReference Include="..\Turnit.GenericStore.NHibernateMaps\Turnit.GenericStore.NHibernateMaps.csproj" />
+  </ItemGroup>
+
+
+
+</Project>

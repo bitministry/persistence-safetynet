@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  cataloghost:
+    build:
+      dockerfile: ./Turnit.GenericStore.WebApi.CatalogHost/Dockerfile
+    image: cataloghost
+    container_name: cataloghost
+    ports:
+      - '5100:80'
+    volumes:
+       - ./Turnit.GenericStore.WebApi.CatalogHost/UnprocessedRequests:/app/UnprocessedRequests      
+    links:
+      - postgres
+    environment:
+      - ConnectionStrings__Default=Server=postgres;Port=5432;Database=turnit_store;User ID=postgres;Password=postgres
+  inventoryhost:
+    build:
+      dockerfile: ./Turnit.GenericStore.WebApi.InventoryHost/Dockerfile
+    image: inventoryhost
+    container_name: inventoryhost
+    ports:
+      - '5200:80'
+    volumes:
+       - ./Turnit.GenericStore.WebApi.InventoryHost/UnprocessedRequests:/app/UnprocessedRequests      
+    links:
+      - postgres
+    environment:
+      - ConnectionStrings__Default=Server=postgres;Port=5432;Database=turnit_store;User ID=postgres;Password=postgres      
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5632:5432'
+    volumes:
+      - ./sql/sql-dump.sql:/docker-entrypoint-initdb.d/init.sql
+      - turnit_data:/var/lib/postgresql/data
+
+volumes:
+  turnit_data:
