@@ -1,5 +1,6 @@
 # Turnit Store task, as it came in
 
+https://gitlab.tsolutions.co/external/practice-exercises/turnit-generic-store
 
 ## General issues
 There are some performance and maintainability problems with the current solution.
