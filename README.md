@@ -1,3 +1,9 @@
+
+
+the [UnprocessedRequestsQueue C# class](https://github.com/bitministry/persistence-safetynet/blob/master/Turnit.GenericStore.WebApi.Common/UnprocessedRequestsQueue.cs) is a **super-ligh**t SAFETY NET for .net web API requests. 
+**it steps in when your data layer fails with an unexpected exception, and retries the processing at later time.**
+no installation nor configuration needed.
+
 # Turnit Store task, as it came in
 
 https://gitlab.tsolutions.co/external/practice-exercises/turnit-generic-store
