@@ -67,7 +67,7 @@ namespace Turnit.GenericStore.WebApi.Common
             
         }
 
-        public void Enqueue<TDto>(TDto model, Exception ex)
+        public async Task Enqueue<TDto>(TDto model, Exception ex)
         {
             var json = JsonSerializer.Serialize(new UnprocessedRequest<TDto>
             {
@@ -75,7 +75,7 @@ namespace Turnit.GenericStore.WebApi.Common
                 Model = model
             });
 
-            File.WriteAllText($"{getActionDirectory<TDto>().FullName}/{Guid.NewGuid()}.txt", json);
+            await File.WriteAllTextAsync($"{getActionDirectory<TDto>().FullName}/{Guid.NewGuid()}.txt", json);
         }
 
         DirectoryInfo getActionDirectory<TDto>()

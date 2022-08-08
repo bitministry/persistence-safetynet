@@ -64,7 +64,7 @@ namespace Turnit.GenericStore.WebApi.CatalogHost.Controllers
                 }
                 catch (Exception ex)
                 {
-                    _safetyNet.Enqueue(model, ex);
+                    await _safetyNet.Enqueue(model, ex);
                     return Problem("Unable to persist to database, request queued");
                 }
             });
